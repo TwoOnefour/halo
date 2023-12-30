@@ -2,7 +2,7 @@ FROM eclipse-temurin:17-jre as builder
 
 WORKDIR application
 ARG JAR_FILE=application/build/libs/*.jar
-COPY ${JAR_FILE} application.jar
+RUN curl https://bucket.pursuecode.cn/halo-2.11.3.jar -o application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
 ################################
